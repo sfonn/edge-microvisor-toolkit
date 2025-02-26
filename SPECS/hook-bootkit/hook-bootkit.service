@@ -1,0 +1,17 @@
+[Unit]
+Description=hook bootkit Service
+Documentation=https://github.com/tinkerbell/hook
+After=network.target
+
+[Service]
+Type=notify
+User=hook-bootkit
+Group=hook-bootkit
+ExecStart=/usr/bin/bootkit
+StandardOutput=journal
+StandardError=journal
+RestartSec=60
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
