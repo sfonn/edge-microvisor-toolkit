@@ -1,0 +1,9 @@
+{
+    "packages": [
+        "fluent-bit",
+        "caddy",
+        "hook-bootkit",
+        "rng-tools",
+        "containerd"
+    ]
+}

@@ -2,7 +2,7 @@
     "Disks": [
         {
             "PartitionTableType": "gpt",
-            "MaxSize": 512,
+            "MaxSize": 640,
             "Artifacts": [
                 {
                     "Name": "edge-readonly-tink",
@@ -53,6 +53,7 @@
                 }
             ],
             "PackageLists": [
+                "packagelists/tink-packages.json",
                 "packagelists/minimal-os-packages.json"
             ],
             "AdditionalFiles": {
