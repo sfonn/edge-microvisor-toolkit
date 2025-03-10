@@ -1,0 +1,93 @@
+{
+    "Disks": [
+        {
+            "PartitionTableType": "gpt",
+            "MaxSize": 512,
+            "Artifacts": [
+                {
+                    "Name": "edge-readonly-tink",
+                    "Type": "raw"
+                },
+                {
+                    "Name": "edge-readonly-tink",
+                    "Type": "vhd"
+                }
+            ],
+            "Partitions": [
+                {
+                    "Name": "esp",
+                    "ID": "boot",
+                    "Flags": [
+                        "esp",
+                        "boot"
+                    ],
+                    "Start": 1,
+                    "End": 9,
+                    "FsType": "fat32",
+                    "Type": "esp"
+                },
+                {
+                    "Name": "rootfs",
+                    "ID": "rootfs",
+                    "Start": 9,
+                    "End": 0,
+                    "FsType": "ext4",
+                    "Type": "linux-root-amd64"
+                }
+            ]
+        }
+    ],
+    "SystemConfigs": [
+        {
+            "Name": "Standard",
+            "BootType": "efi",
+            "PartitionSettings": [
+                {
+                    "ID": "boot",
+                    "MountPoint": "/boot/efi",
+                    "MountOptions" : "umask=0077"
+                },
+                {
+                    "ID": "rootfs",
+                    "MountPoint": "/"
+                }
+            ],
+            "PackageLists": [
+                "packagelists/minimal-os-packages.json"
+            ],
+            "AdditionalFiles": {
+                "additionalconfigs/99-dhcp-en.network": "/etc/systemd/network/99-dhcp-en.network",
+                "additionalconfigs/systemd-networkd-wait-online-override.conf": "/etc/systemd/system/systemd-networkd-wait-online.service.d/override.conf"
+            },
+            "PostInstallScripts": [
+                {
+                        "Path": "additionalconfigs/configure-systemd-networkd-client-identifier.sh"
+                },
+                {
+                        "Path": "additionalconfigs/add-sudoer.sh"
+                }
+            ],
+            "KernelOptions": {
+                "default": "kernel"
+            },
+            "FinalizeImageScripts": [
+                {
+                    "Path": "scripts/cleanup.sh"
+                }
+            ],
+            "KernelCommandLine": {
+                "ExtraCommandLine": "quiet splash"
+            },
+            "Hostname": "TiberOSTink",
+            "DisableRpmDocs": true,
+            "Users": [
+                {
+                    "Name": "root",
+                    "Password": "$6$h06k1YSGP1nz$TVrHZZQS/rf2xo3.gb80GJKkkUzaylHPz/Ofvl/L5seczLeM98man/0zZoY4m.OEuvE2znG2jo909xvIv3FrL1",
+                    "PasswordHashed": true
+                }
+            ]
+
+        }
+    ]
+}
