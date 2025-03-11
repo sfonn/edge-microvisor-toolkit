@@ -4,6 +4,7 @@
         "caddy",
         "hook-bootkit",
         "rng-tools",
+        "docker-cli",
         "containerd"
     ]
 }
