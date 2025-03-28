@@ -2,7 +2,7 @@
     "Disks": [
         {
             "PartitionTableType": "gpt",
-            "MaxSize": 2048,
+            "MaxSize": 1560,
             "Artifacts": [
                 {
                     "Name": "edge-readonly-tink",
@@ -27,17 +27,9 @@
                     "Type": "esp"
                 },
                 {
-                    "Name": "storage",
-                    "ID": "storage",
-                    "Start": 9,
-                    "End": 300,
-                    "FsType": "ext4",
-                    "Type": "linux-root-amd64"
-                },
-                {
                     "Name": "rootfs",
                     "ID": "rootfs",
-                    "Start": 300,
+                    "Start": 9,
                     "End": 0,
                     "FsType": "ext4",
                     "Type": "linux-root-amd64"
@@ -54,10 +46,6 @@
                     "ID": "boot",
                     "MountPoint": "/boot/efi",
                     "MountOptions" : "umask=0077"
-                },
-                {
-                    "ID": "storage",
-                    "MountPoint": "/mnt/cdrom"
                 },
                 {
                     "ID": "rootfs",
@@ -85,10 +73,10 @@
             },
             "FinalizeImageScripts": [
                 {
-                    "Path": "scripts/gen-tink-initramfs.sh"
+                    "Path": "scripts/cleanup.sh"
                 },
                 {
-                    "Path": "scripts/cleanup.sh"
+                    "Path": "scripts/gen-tink-initramfs.sh"
                 }
             ],
             "KernelCommandLine": {
