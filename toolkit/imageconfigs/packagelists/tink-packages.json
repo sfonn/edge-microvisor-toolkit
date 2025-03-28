@@ -1,5 +1,6 @@
 {
     "packages": [
+        "dracut-tmpfsroot",
         "fluent-bit",
         "caddy",
         "hook-bootkit",
