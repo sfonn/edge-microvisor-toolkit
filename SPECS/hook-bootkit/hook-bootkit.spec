@@ -3,7 +3,7 @@
 Summary:        In-memory Operating System Installation Environment for Executing Tinkerbell Workflows
 Name:           hook-bootkit
 Version:        0.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Distribution:   Tiber Microvisor
 Vendor:         Intel Corporation
 License:        Apache-2.0
@@ -43,6 +43,17 @@ cp %{SOURCE2} %{buildroot}%{_sysconfdir}/sudoers.d/hook-bootkit
 
 %post
 %systemd_post hook-bootkit.service
+
+if [ $1 -eq 1 ]; then # Package install
+	systemctl enable hook-bootkit.service > /dev/null 2>&1 || :
+    systemctl start hookbootkit.service > /dev/null 2>&1 || :
+fi
+
+%preun
+%systemd_preun hook-bootkit.service
+
+%postun
+%systemd_postun_with_restart hook-bootkit.service
 
 %files
 %{_bindir}/bootkit
