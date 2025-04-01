@@ -1,38 +1,11 @@
 {
     "Disks": [
         {
-            "PartitionTableType": "gpt",
             "MaxSize": 1560,
             "Artifacts": [
                 {
                     "Name": "edge-readonly-tink",
-                    "Type": "raw"
-                },
-                {
-                    "Name": "edge-readonly-tink",
-                    "Type": "vhd"
-                }
-            ],
-            "Partitions": [
-                {
-                    "Name": "esp",
-                    "ID": "boot",
-                    "Flags": [
-                        "esp",
-                        "boot"
-                    ],
-                    "Start": 1,
-                    "End": 9,
-                    "FsType": "fat32",
-                    "Type": "esp"
-                },
-                {
-                    "Name": "rootfs",
-                    "ID": "rootfs",
-                    "Start": 9,
-                    "End": 0,
-                    "FsType": "ext4",
-                    "Type": "linux-root-amd64"
+                    "Compression": "tar.gz"
                 }
             ]
         }
@@ -41,17 +14,6 @@
         {
             "Name": "Standard",
             "BootType": "efi",
-            "PartitionSettings": [
-                {
-                    "ID": "boot",
-                    "MountPoint": "/boot/efi",
-                    "MountOptions" : "umask=0077"
-                },
-                {
-                    "ID": "rootfs",
-                    "MountPoint": "/"
-                }
-            ],
             "PackageLists": [
                 "packagelists/tink-packages.json",
                 "packagelists/minimal-os-packages.json"
@@ -91,7 +53,6 @@
                     "PasswordHashed": true
                 }
             ]
-
         }
     ]
 }

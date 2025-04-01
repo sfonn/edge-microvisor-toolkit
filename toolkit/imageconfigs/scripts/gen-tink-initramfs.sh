@@ -131,21 +131,22 @@ rm -rf /tmp/initramfs
 # for testing ramfs
 #cp /boot/initramfs-*.img /boot/vmlinuz-* /mnt/cdrom/
 
-sed -i "s|GRUB_TIMEOUT=0|GRUB_TIMEOUT=10|g" "/etc/default/grub"
-sed -i "s|GRUB_CMDLINE_LINUX=|#GRUB_CMDLINE_LINUX=|g" "/etc/default/grub"
-sed -i "s|GRUB_DISABLE_SUBMENU=y|GRUB_DISABLE_SUBMENU=n|g" "/etc/default/grub"
-tee -a /etc/grub.d/40_custom <<EOF
-menuentry 'Boot to Initramfs Shell' {
-    load_video
-    insmod gzio
-    insmod part_gpt
-    insmod ext2
-    set root='(hd0,gpt2)'
-    echo        'Loading Linux emt3 ...'
-    linux       /boot/vmlinuz-6.12.20-1.emt3 root=tmpfs rootflags=size=1G,mode=0755 rd.skipfsck noresume loglevel=7 rd.shell rd.debug systemd.log_level=debug systemd.log_target=kmsg
-    echo        'Loading initial ramdisk ...'
-    initrd      /boot/initramfs-6.12.20-1.emt3.img
-}
-EOF
-/usr/sbin/grub2-mkconfig > /boot/grub2/grub.cfg || :
+# Not required. for ease of test boot on real machine only
+#sed -i "s|GRUB_TIMEOUT=0|GRUB_TIMEOUT=10|g" "/etc/default/grub"
+#sed -i "s|GRUB_CMDLINE_LINUX=|#GRUB_CMDLINE_LINUX=|g" "/etc/default/grub"
+#sed -i "s|GRUB_DISABLE_SUBMENU=y|GRUB_DISABLE_SUBMENU=n|g" "/etc/default/grub"
+#tee -a /etc/grub.d/40_custom <<EOF
+#menuentry 'Boot to Initramfs Shell' {
+#    load_video
+#    insmod gzio
+#    insmod part_gpt
+#    insmod ext2
+#    set root='(hd0,gpt2)'
+#    echo        'Loading Linux emt3 ...'
+#    linux       /boot/vmlinuz-6.12.20-1.emt3 root=tmpfs rootflags=size=1G,mode=0755 rd.skipfsck noresume loglevel=7 rd.shell rd.debug systemd.log_level=debug systemd.log_target=kmsg
+#    echo        'Loading initial ramdisk ...'
+#    initrd      /boot/initramfs-6.12.20-1.emt3.img
+#}
+#EOF
+#/usr/sbin/grub2-mkconfig > /boot/grub2/grub.cfg || :
 
