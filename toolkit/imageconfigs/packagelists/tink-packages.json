@@ -5,6 +5,7 @@
         "caddy",
         "hook-bootkit",
         "rng-tools",
+        "moby-engine",
         "docker-cli",
         "containerd"
     ]
