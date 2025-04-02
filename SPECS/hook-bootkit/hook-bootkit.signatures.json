@@ -1,7 +1,7 @@
 {
   "Signatures": {
     "hook-bootkit-0.10.0.tar.gz": "7d9c15da3b8c2e38a774e4acccfc8652b99f4ebdb4637fc514c37c4bd96db6e7",
-    "hook-bootkit.service": "55b7646ae0918c04c21aeff172890b4c0cd15685b0587841250fb65cc2e39642",
+    "hook-bootkit.service": "94ebe4c88432d902697a244adb2d43385fe5ba2ed799377e5bc0a98aff6fb947",
     "hook-bootkit.sudoers": "3266805e43ea48cab1702c726109d4794357ebc3985be4236143f496caa8b6e9"
   }
 }

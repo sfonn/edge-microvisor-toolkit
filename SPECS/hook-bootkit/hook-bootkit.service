@@ -5,8 +5,8 @@ After=network.target
 
 [Service]
 Type=notify
-User=hook-bootkit
-Group=hook-bootkit
+#User=hook-bootkit
+#Group=hook-bootkit
 ExecStart=/usr/bin/bootkit
 StandardOutput=journal
 StandardError=journal
