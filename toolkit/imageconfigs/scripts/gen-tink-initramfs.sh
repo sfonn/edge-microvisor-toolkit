@@ -55,10 +55,10 @@ mkdir /tmp/rootfs
 cd /tmp/rootfs
 echo "inside $(pwd)"
 echo "free space $(df -h)"
-mkdir -p boot dev etc home mnt media proc sys run tmp usr usr/bin usr/sbin usr/lib var
-chown root:root boot dev etc home mnt media proc sys run tmp usr usr/bin usr/sbin usr/lib var
+mkdir -p boot dev etc home mnt media proc sys run tmp usr usr/bin usr/sbin usr/lib usr/libexec var
+chown root:root boot dev etc home mnt media proc sys run tmp usr usr/bin usr/sbin usr/lib usr/libexec var
 chmod 0700 boot
-chmod 0755 dev etc home mnt media proc sys run tmp usr usr/bin usr/sbin usr/lib var
+chmod 0755 dev etc home mnt media proc sys run tmp usr usr/bin usr/sbin usr/lib usr/libexec var
 echo "copy initial initramfs for rootfs"
 cp -a /tmp/initramfs/dev/* dev/
 ln -s usr/bin bin
@@ -70,11 +70,12 @@ chmod 0777 bin sbin lib lib64
 echo "after initramfs copy $(ls -l .)"
 echo "after initramfs copy $(du -h /tmp/rootfs)"
 echo "copying rootfs files"
-cp -R /usr/sbin/* usr/sbin/ 
-cp -R /usr/bin/* usr/bin/ 
-cp -R /usr/lib/* usr/lib/ 
-cp -R /var/lib var/ 
-cp -R /etc/* etc/
+cp -R -p /usr/sbin/* usr/sbin/
+cp -R -p /usr/bin/* usr/bin/
+cp -R -p /usr/lib/* usr/lib/
+cp -R -p /usr/libexec/* usr/libexec/
+cp -R -p /var/lib var/
+cp -R -p /etc/* etc/
 # override boot device command line
 echo "fstab contents $(cat etc/fstab)"
 echo 'tmpfs   /   tmpfs   defaults,size=1G   0   0' > etc/fstab
@@ -84,7 +85,7 @@ echo "fstab contents after edit $(cat etc/fstab)"
 echo 'LANG=en_US.UTF-8' > etc/locale.conf
 echo 'keymap=us' > etc/vconsole.conf
 mkdir -p usr/share/terminfo/v
-cp -R /usr/share/terminfo/v/vt220 usr/share/terminfo/v/
+cp -R -p /usr/share/terminfo/v/vt220 usr/share/terminfo/v/
 echo "console setup $(cat etc/locale.conf etc/vconsole.conf)"
 echo "after copy $(du -h /tmp/rootfs)"
 echo "free space $(df -h)"
