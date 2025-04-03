@@ -3,7 +3,7 @@
 Summary:        In-memory Operating System Installation Environment for Executing Tinkerbell Workflows
 Name:           hook-bootkit
 Version:        0.10.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Distribution:   Tiber Microvisor
 Vendor:         Intel Corporation
 License:        Apache-2.0
@@ -11,6 +11,7 @@ URL:            https://tinkerbell.org
 Source0:        https://%{hookgitpath}/archive/v%{version}/hook-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        hook-bootkit.service
 Source2:        hook-bootkit.sudoers
+Source3:        hook-docker-setup.sh
 
 BuildRequires:  golang >= 1.22.6
 BuildRequires:  systemd-rpm-macros
@@ -33,6 +34,7 @@ CGO_ENABLED=0 go build -buildmode=pie -mod=vendor -trimpath -ldflags '-s -w -ext
 %install
 # command
 install -D -p -m 0755 -t %{buildroot}%{_bindir} ./bootkit
+install -p -m 0755 %{SOURCE3} %{buildroot}%{_bindir}/hook-docker-setup.sh
 
 # systemd units
 mkdir -p %{buildroot}%{_unitdir}
@@ -59,6 +61,7 @@ fi
 %{_bindir}/bootkit
 %{_unitdir}/hook-bootkit.service
 %config %{_sysconfdir}/sudoers.d/hook-bootkit
+%{_bindir}/hook-docker-setup.sh
 
 %changelog
 * Wed Feb 25 2025 Andy <andy.peng@intel.com> - 0.10.0-1

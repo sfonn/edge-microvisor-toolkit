@@ -1,7 +1,8 @@
 {
   "Signatures": {
+    "hook-docker-setup.sh": "6262f9de21cc67724d8351131fb1175b95f4e3f4bf40e77ecd5079d86cbc51c8",
     "hook-bootkit-0.10.0.tar.gz": "7d9c15da3b8c2e38a774e4acccfc8652b99f4ebdb4637fc514c37c4bd96db6e7",
-    "hook-bootkit.service": "94ebe4c88432d902697a244adb2d43385fe5ba2ed799377e5bc0a98aff6fb947",
+    "hook-bootkit.service": "86cc3127d8f8dc738d11b26a9b1561762b93cf480355647e40dff49415ca318b",
     "hook-bootkit.sudoers": "3266805e43ea48cab1702c726109d4794357ebc3985be4236143f496caa8b6e9"
   }
 }

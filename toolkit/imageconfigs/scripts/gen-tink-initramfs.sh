@@ -51,6 +51,7 @@ echo "unziping initial initramfs for repack"
 gunzip -c -k /boot/$ramfs | cpio -idmv --no-absolute-filenames
 echo "free space $(df -h)"
 
+save_cur_dir=$(pwd)
 mkdir /tmp/rootfs
 cd /tmp/rootfs
 echo "inside $(pwd)"
@@ -61,12 +62,17 @@ chmod 0700 boot
 chmod 0755 dev etc home mnt media proc sys run tmp usr usr/bin usr/sbin usr/lib usr/libexec var
 echo "copy initial initramfs for rootfs"
 cp -a /tmp/initramfs/dev/* dev/
+chmod 0666 dev/console dev/tty* dev/ttyS* dev/USB* || true
 ln -s usr/bin bin
 ln -s usr/sbin sbin
 ln -s usr/lib lib
 ln -s usr/lib lib64
 chown root:root bin sbin lib lib64
 chmod 0777 bin sbin lib lib64
+cd var
+ln -s /run run
+mkdir -p lock
+cd ..
 echo "after initramfs copy $(ls -l .)"
 echo "after initramfs copy $(du -h /tmp/rootfs)"
 echo "copying rootfs files"
@@ -87,10 +93,11 @@ echo 'keymap=us' > etc/vconsole.conf
 mkdir -p usr/share/terminfo/v
 cp -R -p /usr/share/terminfo/v/vt220 usr/share/terminfo/v/
 echo "console setup $(cat etc/locale.conf etc/vconsole.conf)"
+
 echo "after copy $(du -h /tmp/rootfs)"
 echo "free space $(df -h)"
 tar cf - -C . . | gzip -9 > /rootfs.tar.gz
-cd -
+cd $save_cur_dir
 echo $(ls -l /rootfs.tar.gz)
 rm -rf /tmp/rootfs
 
