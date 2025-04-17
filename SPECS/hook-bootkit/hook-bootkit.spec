@@ -3,7 +3,7 @@
 Summary:        In-memory Operating System Installation Environment for Executing Tinkerbell Workflows
 Name:           hook-bootkit
 Version:        0.10.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Distribution:   Tiber Microvisor
 Vendor:         Intel Corporation
 License:        Apache-2.0
@@ -12,6 +12,7 @@ Source0:        https://%{hookgitpath}/archive/v%{version}/hook-%{version}.tar.g
 Source1:        hook-bootkit.service
 Source2:        hook-bootkit.sudoers
 Source3:        hook-docker-setup.sh
+Patch1:         0001-Add-mappings-for-tink-worker.patch
 
 BuildRequires:  golang >= 1.22.6
 BuildRequires:  systemd-rpm-macros
@@ -25,7 +26,7 @@ tink-worker:latest will in turn begin to execute the workflow/actions associated
 %global debug_package %{nil}
 
 %prep
-%setup -q -n hook-%{version}
+%autosetup -p1 -n hook-%{version}
 
 %build
 cd images/hook-bootkit

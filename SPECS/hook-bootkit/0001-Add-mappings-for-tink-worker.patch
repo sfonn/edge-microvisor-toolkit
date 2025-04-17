@@ -1,0 +1,30 @@
+diff --git a/images/hook-bootkit/main.go b/images/hook-bootkit/main.go
+index a752ed0..928fbc6 100644
+--- a/images/hook-bootkit/main.go
++++ b/images/hook-bootkit/main.go
+@@ -205,6 +205,25 @@ func run(ctx context.Context, log logr.Logger) error {
+ 				Source: "/var/run/docker.sock",
+ 				Target: "/var/run/docker.sock",
+ 			},
++			{
++				Type:   mount.TypeBind,
++				Source: "/etc/resolv.conf",
++				Target: "/etc/resolv.conf",
++			},
++		},
++		Resources: container.Resources{
++			Devices: []container.DeviceMapping{
++				{
++					PathOnHost: "/dev",
++					PathInContainer: "/dev",
++					CgroupPermissions: "rwm",
++				},
++				{
++					PathOnHost: "/dev/console",
++					PathInContainer: "/dev/console",
++					CgroupPermissions: "rwm",
++				},
++			},
+ 		},
+ 		NetworkMode: "host",
+ 		Privileged:  true,
