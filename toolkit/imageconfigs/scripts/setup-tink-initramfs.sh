@@ -10,6 +10,13 @@ set -x
 # regen initramfs for tink
 echo "Tink: final regen initramfs"
 
+# tink services
+systemctl disable systemd-homed.service
+systemctl enable caddy.service
+systemctl enable fluent-bit.service
+mkdir -p /etc/fluent-bit
+touch /etc/fluent-bit/fluent-bit.conf
+
 ramfs=$(find /boot -type f -name initramfs*img -printf '%f\n')
 # unzip initramfs
 mkdir /tmp/initramfs
