@@ -1,5 +1,6 @@
 {
   "Signatures": {
+    "rpc.service": "e7e5602d417e19d1a9c4da98ed23d010fc5b1d1f03858d68fb982700c37be159",
     "rpc-go-2.45.1.tar.gz": "54dcb9a72593f7eef02a35255bc5f79636fd7832d26b0fb1189ad300259178f9"
   }
 }

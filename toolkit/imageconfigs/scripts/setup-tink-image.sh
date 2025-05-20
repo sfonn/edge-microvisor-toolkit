@@ -12,13 +12,14 @@ pprefix="Tink"
 systemctl disable systemd-homed.service
 systemctl enable caddy.service
 systemctl enable fluent-bit.service
+systemctl enable rpc.service
 mkdir -p /etc/fluent-bit
 if [ ! -f /etc/fluent-bit/fluent-bit.conf ]; then
   touch /etc/fluent-bit/fluent-bit.conf
 fi
 echo "$pprefix: fstab contents $(cat /etc/fstab)"
 echo 'tmpfs   /   tmpfs   defaults,size=1G   0   0' > /etc/fstab
-echo "$pprefix: $(du -h /usr/share)"
+echo "$pprefix: $(du -ah /usr/share)"
 find /usr/share -type f \
   ! -path "/usr/share/terminfo/v/vt100" \
   ! -path "/usr/share/terminfo/v/vt220" \
@@ -29,8 +30,9 @@ find /usr/share -type f \
   ! -path "/usr/share/dbus-1/system.conf" \
   ! -path "/usr/share/caddy/*" \
   ! -path "/usr/share/pki/*" \
+  ! -path "/usr/share/*.cer" \
   -exec rm -f {} +
-echo "$pprefix: reduced $(du -h /usr/share)"
+echo "$pprefix: reduced $(du -ah /usr/share)"
 
 ramfs=$(find /boot -type f -name initramfs*img -printf '%f\n')
 # unzip initramfs

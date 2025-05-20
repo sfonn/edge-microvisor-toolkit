@@ -1,0 +1,16 @@
+[Unit]
+Description=RPC Service
+Documentation=https://github.com/device-management-toolkit/rpc-go
+Requires=network.target
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/rpc
+StandardOutput=journal
+StandardError=journal
+RestartSec=600
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
