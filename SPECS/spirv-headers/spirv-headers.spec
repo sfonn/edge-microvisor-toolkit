@@ -1,9 +1,9 @@
-%global sdkver 1.3.275.0
+%global sdkver 1.3.296.0
 
 
 Name:           spirv-headers
 Version:        1.5.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Header files from the SPIR-V registry
 
 License:        MIT
@@ -62,6 +62,10 @@ chmod a-x include/spirv/1.2/spirv.py
 %{_datadir}/pkgconfig/SPIRV-Headers.pc
 
 %changelog
+* Fri Jun 20 2025 Swee Yee Fonn <swee.yee.fonn@intel.com> - 1.5.5-3
+- Promote and upgrade to 1.3.296.0 based on Fedora 40.
+- License verified.
+
 * Thu Feb 29 2024 Vince Perri <viperri@microsoft.com> - 1.5.5-2
 - Promote and upgrade to SDK 1.3.275 (commit 1c6bb2743599e6eb6f37b2969acc0aef812e32e3) based on Fedora 40.
 - License verified.
@@ -89,7 +93,7 @@ chmod a-x include/spirv/1.2/spirv.py
 * Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
-* Mon Jun 10 03:08:22 CEST 2019 Robert-AndrÃ© Mauchin <zebob.m@gmail.com> - 1.4.1-1
+* Mon Jun 10 03:08:22 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 1.4.1-1
 - Release 1.4.1
 
 * Thu Mar 07 2019 Dave Airlie <airlied@redhat.com> - 1.2-0.12.20190307.git03a0815

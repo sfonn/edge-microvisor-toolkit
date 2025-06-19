@@ -28907,7 +28907,7 @@
         "other": {
           "name": "spirv-headers",
           "version": "1.5.5",
-          "downloadUrl": "https://github.com/KhronosGroup/SPIRV-Headers//archive/refs/tags/vulkan-sdk-1.3.275.0.tar.gz"
+          "downloadUrl": "https://github.com/KhronosGroup/SPIRV-Headers//archive/refs/tags/vulkan-sdk-1.3.296.0.tar.gz"
         }
       }
     },
@@ -28926,8 +28926,8 @@
         "type": "other",
         "other": {
           "name": "spirv-tools",
-          "version": "2023.2",
-          "downloadUrl": "https://github.com/KhronosGroup/SPIRV-Tools/archive/vulkan-sdk-1.3.275.0.tar.gz"
+          "version": "2024.3",
+          "downloadUrl": "https://github.com/KhronosGroup/SPIRV-Tools/archive/vulkan-sdk-1.3.296.0.tar.gz"
         }
       }
     },

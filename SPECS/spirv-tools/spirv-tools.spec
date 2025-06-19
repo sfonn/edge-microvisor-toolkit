@@ -1,7 +1,7 @@
-%global sdkver 1.3.275.0
+%global sdkver 1.3.296.0
 
 Name:           spirv-tools
-Version:        2023.2
+Version:        2024.3
 Release:        1%{?dist}
 Summary:        API and commands for processing SPIR-V modules
 
@@ -43,22 +43,16 @@ Development files for %{name}
 %autosetup -p1 -n SPIRV-Tools-vulkan-sdk-%{sdkver}
 
 %build
-%__mkdir_p %_target_platform
-pushd %_target_platform
 %cmake3 -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_LIBDIR=%{_lib} \
         -DSPIRV-Headers_SOURCE_DIR=%{_prefix} \
         -DPYTHON_EXECUTABLE=%{__python3} \
         -DSPIRV_TOOLS_BUILD_STATIC=OFF \
-        -GNinja ..
+        -GNinja
 %cmake3_build
-popd
 
 %install
-%__mkdir_p %_target_platform
-pushd %_target_platform
 %cmake3_install
-popd
 
 %ldconfig_scriptlets libs
 
@@ -92,6 +86,10 @@ popd
 %{_libdir}/pkgconfig/SPIRV-Tools.pc
 
 %changelog
+* Fri Jun 20 2025 Swee Yee Fonn <swee.yee.fonn@intel.com> - 2024.3-1
+- Promote and upgrade to 2024.3 based on Fedora 40.
+- License verified.
+
 * Thu Feb 29 2024 Vince Perri <viperri@microsoft.com> - 2023.2-1
 - Promote and upgrade to 2023.2 based on Fedora 40.
 - License verified.
