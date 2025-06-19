@@ -9180,6 +9180,16 @@
       "component": {
         "type": "other",
         "other": {
+          "name": "libclc",
+          "version": "18.1.2",
+          "downloadUrl": "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.2/libclc-18.1.2.src.tar.xz"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "other",
+        "other": {
           "name": "libcli",
           "version": "1.10.7",
           "downloadUrl": "https://github.com/dparrish/libcli/archive/refs/tags/V1.10.7.tar.gz"
