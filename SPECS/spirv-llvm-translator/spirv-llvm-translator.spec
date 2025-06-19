@@ -1,19 +1,20 @@
-%global llvm_compat 14
-
 Name:           spirv-llvm-translator
-Version:        14.0.3
-Release:        2%{?dist}
+Version:        18.1.2
+Release:        1%{?dist}
 Summary:        LLVM to SPIRV Translator
+
 License:        NCSA
 Vendor:         Intel Corporation
 Distribution:   Edge Microvisor Toolkit
 URL:            https://github.com/KhronosGroup/SPIRV-LLVM-Translator
 Source0:        %{url}/archive/v%{version}/%{name}-v%{version}.tar.gz
+
+
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  ninja-build
-BuildRequires:  llvm%{llvm_compat}-devel
+BuildRequires:  llvm-devel
 BuildRequires:  spirv-headers-devel
 BuildRequires:  spirv-tools-devel
 BuildRequires:  zlib-devel
@@ -71,6 +72,9 @@ This package contains the standalone llvm to spirv tool.
 %{_libdir}/pkgconfig/LLVMSPIRVLib.pc
 
 %changelog
+* Fri Jun 20 2024 Swee Yee Fonn <swee.yee.fonn@intel.com> - 18.1.2-1
+- Promote and upgrade to 18.1.2 based on Fedora 40. License verified.
+
 * Tue Dec 24 2024 Naveen Saini <naveen.kumar.saini@intel.com> - 14.0.3-2
 - Updated initial changelog entry having fedora version and license info.
 
