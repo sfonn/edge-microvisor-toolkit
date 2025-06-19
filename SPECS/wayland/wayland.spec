@@ -1,6 +1,6 @@
 Summary:        Wayland Compositor Infrastructure
 Name:           wayland
-Version:        1.22.0
+Version:        1.23.0
 Release:        1%{?dist}
 License:        MIT
 Vendor:         Microsoft Corporation
@@ -113,6 +113,9 @@ Wayland server library
 %{_libdir}/libwayland-server.so.0*
 
 %changelog
+* Fri Jun 20 2025 Swee Yee Fonn <swee.yee.fonn@intel.com> - 1.23-1
+- Upgrade to 1.23.0
+
 * Tue Feb 13 2024 Vince Perri <viperri@microsoft.com> - 1.22.0-1
 - Upgrade to 1.22.0
 

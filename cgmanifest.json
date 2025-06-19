@@ -30556,8 +30556,8 @@
         "type": "other",
         "other": {
           "name": "wayland",
-          "version": "1.22.0",
-          "downloadUrl": "https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.22.0/downloads/wayland-1.22.0.tar.xz"
+          "version": "1.23.0",
+          "downloadUrl": "https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.23.0/downloads/wayland-1.23.0.tar.xz"
         }
       }
     },
@@ -30566,8 +30566,8 @@
         "type": "other",
         "other": {
           "name": "wayland-protocols",
-          "version": "1.36",
-          "downloadUrl": "https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.36/downloads/wayland-protocols-1.36.tar.xz"
+          "version": "1.38",
+          "downloadUrl": "https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.36/downloads/wayland-protocols-1.38.tar.xz"
         }
       }
     },
