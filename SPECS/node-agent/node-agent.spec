@@ -1,6 +1,6 @@
 Summary:        Edge node registration and trust management
 Name:           node-agent
-Version:        1.7.2
+Version:        1.7.3
 Release:        1%{?dist}
 License:        Apache-2.0
 Vendor:         Intel Corporation
@@ -12,7 +12,7 @@ Source2:        env_wrapper.sh
 Source3:        %{name}.conf
 Source4:        node_agent.te
 Source5:        node_agent.fc
-BuildRequires:  golang >= 1.24.1
+BuildRequires:  golang >= 1.24.4
 BuildRequires:  systemd-rpm-macros
 Requires(pre):  %{_bindir}/systemd-sysusers
 Requires:       (%{name}-selinux if selinux-policy-targeted)
@@ -157,6 +157,9 @@ sed -i '/client-proxy/{N;d;}' %{_sysconfdir}/edge-node/node/confs/%{name}.yaml
 %selinux_modules_uninstall -s %{selinuxtype} %{modulename}
 
 %changelog
+* Wed Jul 30 2025 Swee Yee Fonn <swee.yee.fonn@intel.com> - 1.7.3-1
+- Upgrade for AMT PMA integration
+
 * Fri May 16 2025 Rajeev Ranjan <rajeev2.ranjan@intel.com> - 1.7.2-1
 - Caddy configuration not needed anymore
 
