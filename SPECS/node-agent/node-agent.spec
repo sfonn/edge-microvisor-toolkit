@@ -89,6 +89,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/intel_edge_node/tokens/license-agent
 mkdir -p %{buildroot}%{_sysconfdir}/intel_edge_node/tokens/platform-update-agent
 mkdir -p %{buildroot}%{_sysconfdir}/intel_edge_node/tokens/prometheus
 mkdir -p %{buildroot}%{_sysconfdir}/intel_edge_node/tokens/release-service
+mkdir -p %{buildroot}%{_sysconfdir}/intel_edge_node/tokens/platform-manageability-agent
 
 %files
 %{_bindir}/%{name}
@@ -117,6 +118,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/intel_edge_node/tokens/release-service
 %dir %{_sysconfdir}/intel_edge_node/tokens/platform-update-agent
 %dir %{_sysconfdir}/intel_edge_node/tokens/prometheus
 %dir %{_sysconfdir}/intel_edge_node/tokens/release-service
+%dir %{_sysconfdir}/intel_edge_node/tokens/platform-manageability-agent
 
 %pre
 %sysusers_create_package %{name} %{SOURCE3}
@@ -158,7 +160,7 @@ sed -i '/client-proxy/{N;d;}' %{_sysconfdir}/edge-node/node/confs/%{name}.yaml
 
 %changelog
 * Wed Jul 30 2025 Swee Yee Fonn <swee.yee.fonn@intel.com> - 1.7.3-1
-- Upgrade for AMT PMA integration
+- Upgrade for platform-manageability-agent handling
 
 * Fri May 16 2025 Rajeev Ranjan <rajeev2.ranjan@intel.com> - 1.7.2-1
 - Caddy configuration not needed anymore
