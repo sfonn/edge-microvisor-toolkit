@@ -75,8 +75,8 @@ cp copyright %{buildroot}%{_defaultlicensedir}/%{name}
 %{systemd_postun_with_restart %{name}.service}
 
 %changelog
-* Wed Jul 30 2025 Swee Yee Fonn <swee.yee.fonn@intel.com> - 0.1.2-1
-- Update to 0.1.2
+* Wed Jul 30 2025 Jagrat Acharya <jagrat.acharya@intel.com> - 0.1.2-1
+- Binary name updated in spec file.
 
 * Thu Jul 17 2025 Jagrat Acharya <jagrat.acharya@intel.com> - 0.1.0-1
 - Original version for Edge Microvisor Toolkit. License verified.
